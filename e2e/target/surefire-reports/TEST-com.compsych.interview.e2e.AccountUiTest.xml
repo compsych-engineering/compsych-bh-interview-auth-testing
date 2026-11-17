@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.compsych.interview.e2e.AccountUiTest" time="16.099" tests="9" errors="0" skipped="0" failures="1" flakes="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/test-classes:/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/classes:/Users/vnovey/.m2/repository/com/microsoft/playwright/playwright/1.64.0/playwright-1.64.0.jar:/Users/vnovey/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/Users/vnovey/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/vnovey/.m2/repository/com/microsoft/playwright/driver/1.64.0/driver-1.64.0.jar:/Users/vnovey/.m2/repository/com/microsoft/playwright/driver-bundle/1.64.0/driver-bundle-1.64.0.jar:/Users/vnovey/.m2/repository/com/google/code/gson/gson/2.15.0/gson-2.15.0.jar:/Users/vnovey/.m2/repository/com/google/errorprone/error_prone_annotations/2.50.0/error_prone_annotations-2.50.0.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter/5.14.4/junit-jupiter-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.14.4/junit-jupiter-api-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.14.4/junit-jupiter-params-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.14.4/junit-jupiter-engine-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar:/Users/vnovey/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="America/Denver"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@17/17.0.21.0.3/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/surefire/surefirebooter-20261117083755870_3.jar /Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/surefire 2026-11-17T08-37-55_837-jvmRun1 surefire-20261117083755870_1tmp surefire_0-20261117083755870_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/test-classes:/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/classes:/Users/vnovey/.m2/repository/com/microsoft/playwright/playwright/1.64.0/playwright-1.64.0.jar:/Users/vnovey/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/Users/vnovey/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/vnovey/.m2/repository/com/microsoft/playwright/driver/1.64.0/driver-1.64.0.jar:/Users/vnovey/.m2/repository/com/microsoft/playwright/driver-bundle/1.64.0/driver-bundle-1.64.0.jar:/Users/vnovey/.m2/repository/com/google/code/gson/gson/2.15.0/gson-2.15.0.jar:/Users/vnovey/.m2/repository/com/google/errorprone/error_prone_annotations/2.50.0/error_prone_annotations-2.50.0.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter/5.14.4/junit-jupiter-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.14.4/junit-jupiter-api-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.14.4/junit-jupiter-params-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.14.4/junit-jupiter-engine-5.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.jar:/Users/vnovey/.m2/repository/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar:/Users/vnovey/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/vnovey"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-10-24"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@17/17.0.21.0.3/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e/target/surefire/surefirebooter-20261117083755870_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.21.0.3+0"/>
+    <property name="user.name" value="vnovey"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.7.2"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/vnovey/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/r9/1g59knvs5tsfm_j2_5zr57tr0000gp/T/"/>
+    <property name="java.version" value="17.0.21.0.3"/>
+    <property name="user.dir" value="/Users/vnovey/Documents/GitHub/compsych-bh-interview-auth-testing-and-generalization/e2e"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/vnovey/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="17.0.21.0.3+0"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="backReturnsToTheListAndLogoutReturnsToLogin" classname="com.compsych.interview.e2e.AccountUiTest" time="1.105"/>
+  <testcase name="selectingARowOpensTheFormPrefilledForThatAccount" classname="com.compsych.interview.e2e.AccountUiTest" time="0.953"/>
+  <testcase name="loginScreenShowsWelcomeAndMarksRequiredFields" classname="com.compsych.interview.e2e.AccountUiTest" time="0.07"/>
+  <testcase name="savedChangesAppearInTheAccountList" classname="com.compsych.interview.e2e.AccountUiTest" time="1.14"/>
+  <testcase name="adminSeesTheAccountTableAfterLogin" classname="com.compsych.interview.e2e.AccountUiTest" time="0.123"/>
+  <testcase name="editFormMarksFieldsRequiredAndOffersSaveAndBack" classname="com.compsych.interview.e2e.AccountUiTest" time="3.472"/>
+  <testcase name="switchingBetweenAccountsShowsTheSelectedAccount" classname="com.compsych.interview.e2e.AccountUiTest" time="8.565">
+    <failure message="Locator expected to be visible&#10;Error: element(s) not found&#10;Call log:&#10;  - Assert &quot;isVisible&quot; getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName(&quot;Edit account acct-3&quot;)) with timeout 5000ms&#10;  - waiting for getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName(&quot;Edit account acct-3&quot;))" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
+Locator expected to be visible
+Error: element(s) not found
+Call log:
+  - Assert "isVisible" getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Edit account acct-3")) with timeout 5000ms
+  - waiting for getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Edit account acct-3"))
+	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:76)
+	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:47)
+	at com.microsoft.playwright.impl.LocatorAssertionsImpl.expectTrue(LocatorAssertionsImpl.java:471)
+	at com.microsoft.playwright.impl.LocatorAssertionsImpl.isVisible(LocatorAssertionsImpl.java:466)
+	at com.microsoft.playwright.assertions.LocatorAssertions.isVisible(LocatorAssertions.java:861)
+	at com.compsych.interview.e2e.AccountUiTest.switchingBetweenAccountsShowsTheSelectedAccount(AccountUiTest.java:89)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+  </testcase>
+  <testcase name="wrongPasswordShowsAnErrorAndStaysOnLogin" classname="com.compsych.interview.e2e.AccountUiTest" time="0.12"/>
+  <testcase name="emptyLoginFormIsNotSubmitted" classname="com.compsych.interview.e2e.AccountUiTest" time="0.079"/>
+</testsuite>

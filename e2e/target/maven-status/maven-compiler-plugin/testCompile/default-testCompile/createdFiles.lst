@@ -1,0 +1,6 @@
+com/compsych/interview/e2e/ApiClient.class
+com/compsych/interview/e2e/AccountUiTest.class
+com/compsych/interview/e2e/AccountApiTest.class
+com/compsych/interview/e2e/Pw.class
+com/compsych/interview/e2e/BrowserTest.class
+com/compsych/interview/e2e/Config.class

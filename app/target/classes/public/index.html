@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="card" id="card">
+    <header class="masthead">
+      <h1>Welcome To <strong>Account Portal</strong></h1>
+    </header>
+
+    <div id="session-bar" hidden>
+      <span>Signed in as <strong id="whoami"></strong> (<span id="role"></span>)</span>
+      <button id="logout-button" type="button" class="secondary">Log out</button>
+    </div>
+
+    <form id="login-form">
+      <p class="required-note"><span class="req">*</span> Required field</p>
+      <label for="username">Username<span class="req" aria-hidden="true">*</span></label>
+      <input id="username" name="username" autocomplete="username" required aria-required="true">
+      <label for="password">Password<span class="req" aria-hidden="true">*</span></label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required aria-required="true">
+      <button id="login-button" type="submit" class="full">Log in</button>
+    </form>
+
+    <section id="account-list" hidden>
+      <h2>Accounts</h2>
+      <table id="accounts-table">
+        <thead>
+          <tr><th>ID</th><th>Owner</th><th>Display name</th><th>Email</th><th></th></tr>
+        </thead>
+        <tbody id="accounts-body"></tbody>
+      </table>
+    </section>
+
+    <form id="account-form" hidden>
+      <h2 id="account-heading">Your account</h2>
+      <p class="required-note"><span class="req">*</span> Required field</p>
+      <label for="displayName">Display name<span class="req" aria-hidden="true">*</span></label>
+      <input id="displayName" name="displayName" required aria-required="true">
+      <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
+      <input id="email" name="email" type="email" required aria-required="true">
+      <div class="actions">
+        <button id="save-button" type="submit">Save</button>
+        <button id="back-button" type="button" class="secondary" hidden>Back to accounts</button>
+      </div>
+    </form>
+
+    <div id="status" role="status"></div>
+  </main>
+
+  <script>
+    // The token lives only in these variables, so reloading the page logs you out.
+    let token = null;
+    let session = null;     // { username, role, accountId }
+    let accountId = null;   // the account currently open in the form
+
+    const $ = (id) => document.getElementById(id);
+    const isAdmin = () => session && session.role === 'admin';
+
+    function setStatus(message, kind) {
+      const el = $('status');
+      el.textContent = message;
+      el.className = kind || '';
+    }
+
+    async function api(method, path, body) {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+      const res = await fetch(path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error + ' (HTTP ' + res.status + ')');
+      return data;
+    }
+
+    // Exactly one of the three views is visible at a time.
+    function showView(view) {
+      $('login-form').hidden = view !== 'login';
+      $('account-list').hidden = view !== 'list';
+      $('account-form').hidden = view !== 'form';
+      $('session-bar').hidden = view === 'login';
+      $('card').classList.toggle('wide', view === 'list');   // the table needs more room
+    }
+
+    async function showList() {
+      const accounts = await api('GET', '/api/accounts');
+      const body = $('accounts-body');
+      body.replaceChildren();
+      for (const a of accounts) {
+        const row = document.createElement('tr');
+        row.dataset.id = a.id;
+        for (const value of [a.id, a.owner, a.displayName, a.email]) {
+          const cell = document.createElement('td');
+          cell.textContent = value;
+          row.appendChild(cell);
+        }
+        const action = document.createElement('td');
+        const edit = document.createElement('button');
+        edit.type = 'button';
+        edit.textContent = 'Edit';
+        edit.style.marginTop = '0';
+        action.appendChild(edit);
+        row.appendChild(action);
+        body.appendChild(row);
+      }
+      showView('list');
+    }
+
+    async function openAccount(id) {
+      const account = await api('GET', '/api/accounts/' + id);
+      accountId = account.id;
+      $('displayName').value = account.displayName;
+      $('email').value = account.email;
+      $('account-heading').textContent = isAdmin() ? 'Edit account ' + account.id : 'Your account';
+      $('back-button').hidden = !isAdmin();
+      // Only admins can update accounts, so members see their details read-only, with no Save.
+      const editable = isAdmin();
+      $('displayName').readOnly = !editable;
+      $('email').readOnly = !editable;
+      $('save-button').hidden = !editable;
+      $('account-form').classList.toggle('read-only', !editable);
+      showView('form');
+    }
+
+    $('login-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      try {
+        session = await api('POST', '/api/login', {
+          username: $('username').value,
+          password: $('password').value,
+        });
+        token = session.token;
+        $('whoami').textContent = session.username;
+        $('role').textContent = session.role;
+        if (isAdmin()) {
+          await showList();
+        } else {
+          await openAccount(session.accountId);
+        }
+        setStatus('Logged in.', 'ok');
+      } catch (e) {
+        token = null;
+        session = null;
+        setStatus(e.message, 'error');
+      }
+    });
+
+    // Clicking anywhere on a row (including its Edit button) opens that account.
+    $('accounts-body').addEventListener('click', async (event) => {
+      const row = event.target.closest('tr[data-id]');
+      if (!row) return;
+      try {
+        await openAccount(row.dataset.id);
+        setStatus('', '');
+      } catch (e) {
+        setStatus(e.message, 'error');
+      }
+    });
+
+    $('account-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!isAdmin()) return;
+      try {
+        const saved = await api('PUT', '/api/accounts/' + accountId, {
+          displayName: $('displayName').value,
+          email: $('email').value,
+        });
+        $('displayName').value = saved.displayName;
+        $('email').value = saved.email;
+        setStatus('Account saved.', 'ok');
+      } catch (e) {
+        setStatus(e.message, 'error');
+      }
+    });
+
+    $('back-button').addEventListener('click', async () => {
+      try {
+        await showList();
+        setStatus('', '');
+      } catch (e) {
+        setStatus(e.message, 'error');
+      }
+    });
+
+    $('logout-button').addEventListener('click', () => {
+      token = null;
+      session = null;
+      accountId = null;
+      $('password').value = '';
+      showView('login');
+      setStatus('Logged out.', 'ok');
+    });
+  </script>
+</body>
+</html>

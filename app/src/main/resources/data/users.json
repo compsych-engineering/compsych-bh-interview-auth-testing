@@ -1,0 +1,6 @@
+[
+  { "username": "alice", "password": "password", "role": "member", "accountId": "acct-1", "grants": ["update:others"] },
+  { "username": "bob",   "password": "password", "role": "member", "accountId": "acct-2", "grants": ["update:self"] },
+  { "username": "carol", "password": "password", "role": "admin",  "accountId": "acct-3" },
+  { "username": "admin", "password": "password", "role": "admin",  "accountId": "acct-4" }
+]

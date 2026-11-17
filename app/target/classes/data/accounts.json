@@ -1,0 +1,6 @@
+[
+  { "id": "acct-1", "owner": "alice", "displayName": "Alice Anderson", "email": "alice@example.com" },
+  { "id": "acct-2", "owner": "bob",   "displayName": "Bob Brown",      "email": "bob@example.com" },
+  { "id": "acct-3", "owner": "carol", "displayName": "Carol Chen",     "email": "carol@example.com" },
+  { "id": "acct-4", "owner": "admin", "displayName": "Site Admin",    "email": "admin@example.com" }
+]
